@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- To Be included as an IFrame element in a Canvas Site -->
+<head>
+  <style type="text/css">
+  *{
+    box-sizing: border-box;
+  }
+  body{
+    font-family: sans-serif;
+  }
+
+  #top-container{
+    display: block;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: #eee;
+    height: 600px;
+    width: 700px;
+    position: relative;
+  }
+  #right-pane{
+    position: absolute;
+    display: block;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 130px;
+    background: white;
+    height: 100%;
+    padding: 0px;
+    
+
+  }
+
+  #left-pane{
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 130px;
+    padding: 0px;
+    background: white;
+    height: 100%;
+  }
+
+  #button-container{
+
+  }
+  
+  #accordian-container{
+    height: 100%;
+  
+  }
+  
+  button.nav-btn{
+    width: 100%;
+    border: none;
+    padding: 15px;
+    background: #78a1e2;
+    display: none;
+  }
+
+  button.nav-btn:hover{
+    background: grey;
+  }
+
+  button.nav-btn:active{
+    background: white;
+  }
+
+  button.selected{
+    background: #eaedf2;
+  }
+
+  div.accordian-pane{
+    margin: 0px;
+    height: 100%;
+    background: grey;
+    padding: 15px;
+  }
+
+  div.accordian-pane h1{
+    margin: 0px;
+    padding: 15px;
+  }
+
+  div.active{
+    background: #eaedf2;
+    display: block;
+  }
+
+  div.hidden{
+    display: none;
+  }
+  
+  span.link-emphasis{
+    background: white;
+    padding: 20px;
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #04e;
+    border-radius: 5px;
+  
+  }
+
+  </style>
+  <script type="text/javascript">
+  var documentLoad = function(){
+	var accCount = document.getElementById("accordian-container").childElementCount;
+	for (var i = 0; i < accCount; i++){
+		//var newBtn = new Button
+		
+		var btn = document.getElementById("button-container").children[i];
+		
+		btn.innerHTML = document.getElementById("accordian-container").children[i].children[0].innerHTML;
+		btn.style ="display: block";
+		
+	}
+	
+
+  }
+
+  var current_pane = 1;
+
+  function switchPane(obj, index){
+    if(index != current_pane){
+      document.getElementById("accordian-container").childNodes[(index*2)-1].classList.replace("hidden", "active")
+      document.getElementById("accordian-container").childNodes[(current_pane*2)-1].classList.replace("active", "hidden")
+      obj.classList.add("selected")
+      obj.parentNode.childNodes[(current_pane*2)-1].classList.remove("selected");
+      current_pane = index;
+    }
+  }
+
+  window.addEventListener('load', documentLoad);
+  </script>
+</head>
+<body>
+  <div id="top-container">
+    <div class="pane" id="right-pane">
+      <div id="button-container">
+        <button type="button" name="button" onclick="switchPane(this, 1)"class="nav-btn selected">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 2)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 3)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 4)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 5)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 6)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 7)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 8)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 9)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 10)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 11)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 12)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 13)"class="nav-btn">Button 1</button>
+        <button type="button" name="button" onclick="switchPane(this, 14)"class="nav-btn">Button 1</button>
+      </div>
+    </div>
+    <div class="pane" id="left-pane">
+      <div class="container" id="accordian-container">
+        <div class="accordian-pane active">
+          <h1>Welcome</h1>
+          <p> Welcome to the canvas Quick Start Guide, this will help you get started with Canvas</p>
+          <img src="http://interbizconsulting.com/wp-content/uploads/2016/10/e1fecee5-b808-4992-85ad-1de7392eba9a.jpg" width="300px" dragable="false"/>
+          <p> Click on the items in the menu to the right to view a topic </p>
+        </div>
+        <div class="accordian-pane hidden">
+          <h1>Getting Started</h1>
+          <p>To get started with canvas, follow the link below and log in using your university (ANGLIA) username and password.</p>
+          <p><span class="link-emphasis"><a href="https://canvas.anglia.ac.uk" target="_blank">https://canvas.anglia.ac.uk</a></span>
+          <p> Click on the items in the menu to the right to view a topic </p>
+        </div>
+        <div class="accordian-pane hidden">
+          <h1>3 Canvas Quick Start Guide</h1>
+          <p> Welcome to the canvas Quick Start Guide, this will help you get started with Canvas</p>
+          <p> Click on the items in the menu to the right to view a topic </p>
+        </div>
+        <div class="accordian-pane hidden">
+          <h1>4 Canvas Quick Start Guide</h1>
+          <p> Welcome to the canvas Quick Start Guide, this will help you get started with Canvas</p>
+          <p> Click on the items in the menu to the right to view a topic </p>
+        </div>
+        <div class="accordian-pane hidden">
+          <h1>5 Canvas Quick Start Guide</h1>
+          <p> Welcome to the canvas Quick Start Guide, this will help you get started with Canvas</p>
+          <p> Click on the items in the menu to the right to view a topic </p>
+        </div>
+         <div class="accordian-pane hidden">
+          <h1>5 Canvas Quick Start Guide</h1>
+          <p> Welcome to the canvas Quick Start Guide, this will help you get started with Canvas</p>
+          <p> Click on the items in the menu to the right to view a topic </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
