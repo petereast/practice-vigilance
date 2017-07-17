@@ -1,0 +1,54 @@
+div#shade{
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: #777165;
+}
+
+div#login-dialogue{
+  /* design for mobile first, stupid! */
+  position: absolute;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+
+  z-index: 100;
+
+  padding: 50px;
+}
+
+input[type=text], input[type=password]{
+  padding: 15px;
+  margin: 5px;
+}
+
+input[type=submit]{
+  padding: 15px;
+  margin: 5px;
+}
+
+@media screen and (min-width: 400px) {
+  div.input-container{
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+    position: relative;
+  }
+
+  div.input-container span.input-label{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+
+  input[type=text], input[type=password]{
+    border: 0px;
+    width: 100%;
+
+  }
+}

@@ -1,122 +1,21 @@
 <!DOCTYPE html>
 <!-- To Be included as an IFrame element in a Canvas Site -->
 <head>
-  <style type="text/css">
-  *{
-    box-sizing: border-box;
-  }
-  body{
-    font-family: sans-serif;
-  }
-
-  #top-container{
-    display: block;
-    border: 1px solid black;
-    border-radius: 5px;
-    background: #eee;
-    height: 600px;
-    width: 700px;
-    position: relative;
-  }
-  #right-pane{
-    position: absolute;
-    display: block;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
-    width: 130px;
-    background: white;
-    height: 100%;
-    padding: 0px;
-    
-
-  }
-
-  #left-pane{
-    display: block;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    left: 130px;
-    padding: 0px;
-    background: white;
-    height: 100%;
-  }
-
-  #button-container{
-
-  }
-  
-  #accordian-container{
-    height: 100%;
-  
-  }
-  
-  button.nav-btn{
-    width: 100%;
-    border: none;
-    padding: 15px;
-    background: #78a1e2;
-    display: none;
-  }
-
-  button.nav-btn:hover{
-    background: grey;
-  }
-
-  button.nav-btn:active{
-    background: white;
-  }
-
-  button.selected{
-    background: #eaedf2;
-  }
-
-  div.accordian-pane{
-    margin: 0px;
-    height: 100%;
-    background: grey;
-    padding: 15px;
-  }
-
-  div.accordian-pane h1{
-    margin: 0px;
-    padding: 15px;
-  }
-
-  div.active{
-    background: #eaedf2;
-    display: block;
-  }
-
-  div.hidden{
-    display: none;
-  }
-  
-  span.link-emphasis{
-    background: white;
-    padding: 20px;
-    width: 100%;
-    display: inline-block;
-    border: 1px solid #04e;
-    border-radius: 5px;
-  
-  }
-
-  </style>
+  <title>Accordian test</title>
+  <link rel="stylesheet" type="text/css" href="../static/ui-test/accordian.css"/>
   <script type="text/javascript">
   var documentLoad = function(){
 	var accCount = document.getElementById("accordian-container").childElementCount;
 	for (var i = 0; i < accCount; i++){
 		//var newBtn = new Button
-		
+
 		var btn = document.getElementById("button-container").children[i];
-		
+
 		btn.innerHTML = document.getElementById("accordian-container").children[i].children[0].innerHTML;
 		btn.style ="display: block";
-		
+
 	}
-	
+
 
   }
 
