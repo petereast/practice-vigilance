@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Section Builder</title>
+    <script type="text/javascript" src='/static/scripts/section-builder.js'>
+
+    </script>
+  </head>
+  <body>
+    <div class="control-container" id="toolbox">
+      <h1>Toolbox</h1>
+      <div class="tool-container" id="tool-container">
+        <span class="toolpad">
+          Title: <input id="section_title_input" class="tool"/>
+        </span>
+        <button id="add_mcq_btn" class="tool">Add MCQ</btn>
+      </div>
+    </div>
+
+
+    <form class="modal hidden" id="mcq-config">
+      <!-- it's a form so it can easily be reset -->
+      <div class="modal-shade"></div>
+      <span class="toolpad">
+        <h2>MCQ Config</h2>
+        <div id="mcq_config_control_container">
+          <div class="mcq_config_response">
+            <span class="toolpad"><h3>Title:</h3><input id="mcq_config_title"/></span>
+            <h3>Question text</h3>
+            <ul id="mcq_config_response_list">
+
+            </ul>
+          </div>
+          <button type="button" id="mcq_config_add_response">Add Response</button>
+          <button type="button" id="mcq_config_complete">Add MCQ</button>
+          <button type="button" id="mcq_config_cancel">Cancel</button>
+        </div>
+      </span>
+    </form>
+
+
+    <div class="control-container">
+      <div id="section_display">
+        <h1 id="section_title_disp"></h1>
+        <p id="section_render_output">
+
+        </p>
+
+      </div>
+    </div>
+  </body>
+</html>

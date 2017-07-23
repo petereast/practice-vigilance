@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/style/master.css">
+    <link rel="stylesheet" href="/static/style/dashboard.css">
+    <script src="/static/scripts/dashboard.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/static/scripts/std.js"></script>
+    <title>Dashboard</title>
+  </head>
+  <body>
+
+      {{page.topmenu}}
+
+    <div class="body-container">
+      <!-- TODO: Make the notification system asynchronous! -->
+      {{user.notifications}}
+      <h1>Dashboard</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div class="interface-card-container">
+        {{user.cards}}
+      </div>
+    </div>
+    <div id="bottom">
+      <div id="bottom-content-container">
+        <div class="corporate-information">
+          Some corporate and legal information.
+        </div>
+        <div class="copyright">
+          &copy; 2017 <a href="http://petereast.github.io">Peter East</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

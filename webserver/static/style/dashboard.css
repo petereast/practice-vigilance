@@ -1,0 +1,17 @@
+div.controlbox{
+  width: 100%
+
+}
+
+@media screen and (min-width: 800px){
+  div.controlbox{
+    width: 300px;
+    height: 200px;
+
+    margin: 15px;
+    padding: 30px;
+
+    border: 1px solid black;
+  }
+
+}

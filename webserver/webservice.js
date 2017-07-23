@@ -54,6 +54,7 @@ function main(){
   expr_app.use(express.static('public'));
 
   // use static directory as static pages, such as css, images and javascript
+  // TODO: Write code for an in memory cache of these resources.
   expr_app.use('/static', express.static('static'));
 
   // Handle logins (start point of a session)
@@ -67,7 +68,7 @@ function main(){
 
   // Start begin sessioned stuff.
 
-  expr_app.get('/test', function(req, res){
+  expr_app.get('/test/*', function(req, res){
     res.send("<script> alert('hello world!')</script>")
   });
 
@@ -76,6 +77,26 @@ function main(){
   expr_app.use(session_handler.ValidateSession)
 
   expr_app.get('/dashboard', dashboardRenderer.render);
+
+
+  expr_app.use("/admin*", accessControl.controlLevel.admin)
+  expr_app.get('/admin/users', dashboardRenderer.subpages.renderUserAdmin);
+  expr_app.get('/admin/users/groups/*', dashboardRenderer.subpages.renderUserGroupView);
+
+  // Include code to handle async admin requests (listing users in a group etc.)
+  // This next block of code will only output JSON encoded data.
+  expr_app.get("/admin/async")
+
+
+  // End of the json bit
+  expr_app.get('/api', function(req, res){
+    res.send("API Not operational!");
+  });
+
+  expr_app.get("/api/version", function(req, res){
+    res.writeHead(200, {"Content-Type":"appliaction/json"});
+    res.end(JSON.stringify(SERVER_VERSION));
+  });
 
   expr_app.listen(8080, function(){
     console.log("Listening on 8080");

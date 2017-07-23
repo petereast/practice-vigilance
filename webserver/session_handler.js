@@ -1,42 +1,48 @@
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const querystring = require('querystring');
+const crypto = require('crypto');
+
+
 const accessControl = require('./access.js');
 
 
 const HTTPSESSION_DB_URL = "mongodb://localhost:27017/pad-testing";
 
+function uid(){return crypto.randomBytes(18).toString("hex");}
+
+
+
 module.exports = {
   ValidateSession: function(req, res, next){
-    console.log("test");
-
     // Handle the session management, as express middleware.
     // this'll attach & read the cookies directly to req res.
 
     var parsed_cookies = querystring.parse(req.headers.cookie);
-    console.log("Session:");
-    console.log(parsed_cookies);
-
-    console.log(req.path);
 
     MongoClient.connect(HTTPSESSION_DB_URL, function(err, db){
       // This code is to simply check if there's a valid session, and if there
       // isn't, then to redirect the user to a
-
       var query = {
-        _id:""
-      }
+        session:parsed_cookies['SessionID']
+      };
 
-      db.collection("session").findOne(query, function(err, result){
-
-
-        // if there's a valid session then next.d
+      db.collection("session").find(query).toArray(function(err, result){
+        if(err) throw err;
+        // if there's a valid session then next()
+        if(result.length == 1){
+          req.session_info = result[0]
+          next();
+        } else {
+          // Invalid session:
+          console.log("invalid session");
+          accessControl.reject_login_attempt(req, res);
+        }
       });
 
       // End of MongoClient.connect block
     });
 
-    next();
   },
   InitiateSession: function(req, res, next){
     // First check that the user doesn't already have a session
@@ -73,12 +79,15 @@ module.exports = {
 
             data_to_insert = {
               "user": allowed._id,
+              "session":uid(),
               "expiry": 1000*60*60 // One hour, should be configurable.
             };
 
+            console.log(data_to_insert)
+
             db.collection("session").insertOne(data_to_insert, (err, result) => {
               if(err) throw err;
-              var sessionID = result.ops[0]._id;
+              var sessionID = result.ops[0].session;
               // Write the cookie information to the user.
               res.writeHead(303, {
                 "Location":"/dashboard",

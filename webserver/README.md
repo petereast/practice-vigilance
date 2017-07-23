@@ -14,3 +14,23 @@ The main module uses the following bespoke submodules:
 - user_management.js
   - This is used to query the user database, to get user roles and other permissions
   - This could possibly be implemented as middleware, attaching the user's information to the req object.
+
+
+# Design for User data object
+
+```
+User: {
+  _id: ObjectID,
+  username: "testuserone",
+  password: "base64 encoded hash"
+  userInfo: {
+    role: "admin",
+    name: "Peter East",
+    "email": "peter.east@peter.east.com",
+    "contact_details": []
+  },
+  cards_cache:[
+    // Contains a list of the html ready cards to be put into this user's dashboard. This should be updated intelligently 
+  ]
+}
+```

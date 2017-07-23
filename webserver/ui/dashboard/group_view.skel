@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/style/master.css">
+    <link rel="stylesheet" href="/static/style/dashboard.css">
+    <script src="/static/scripts/dashboard.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/static/scripts/std.js"></script>
+    <title>User Admin</title>
+  </head>
+  <body>
+      {{page.topmenu}}
+
+    <div class="body-container">
+      <!-- TODO: Make the notification system asynchronous! -->
+      {{user.notifications}}
+      <h1>{{group.name}}</h1>
+      <h2>User Group</h2>
+      <p>View and edit the users in this group</p>
+      <div class="button-container">
+        <button id="add-users-by-csv-btn">Add Using CSV file</button>
+        <button id="add-users-by-csv-btn">Add Manually</button>
+        <button id="add-users-by-csv-btn">Add Group</button>
+      </div>
+
+      <!-- Displayy a list of user groups, showing how many users per group -->
+      <!-- Do this asynchronously -->
+      <div id="group-users-list-container">
+        <ul id="group-users-list-display">
+          <li>
+            <h3>Example User</h3>
+            <button type="button" name="button" class="users-group-li-btn">Edit User</button>
+            <button type="button" name="button" class="users-group-li-btn">Remove from Group</button>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <div id="bottom">
+      <div id="bottom-content-container">
+        <div class="corporate-information">
+          Some corporate and legal information.
+        </div>
+        <div class="copyright">
+          &copy; 2017 <a href="http://petereast.github.io">Peter East</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

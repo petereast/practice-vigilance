@@ -66,10 +66,13 @@ module.exports = {
   reject_login_attempt: function (req, res, next) {
     // Redirect the user to the login page, with a message telling them that
     // they stoopid
-    res.send("Your login attempt has been rejected :(<script>location.href='../login.html';</script>");
+    res.writeHead(303, {
+      "Location":"/login"});
+    //res.redirect("/dashboard");
+    res.end("Your login attempt has been rejected :(<script>location.href='../login.html';</script>");
   },
   add_user: function(){
-    console.log("function to add user");
+    console.log("function to add user [cancelled]");
     // TODO: I need to provision the functionality to add many users at once.
 
     // NOTE: The following code is debug code to add a single user into the database
@@ -86,27 +89,43 @@ module.exports = {
     //    contact_details: {}
     //  }
     //}
-    MongoClient.connect(MONGO_DB_URL, function(err, db){
-      if(err) throw err;
-
-      var example_user = {
-        username: "peter",
-        password: "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=", // 1234
-        userInfo: {
-          role: "admin",
-          name: "Peter East",
-          email: "peter.east@peter.east.com",
-          contact_details: {}
-        }
-      }
-
-      db.collection("users").insertOne(example_user, function(err, result){
-        if(err) throw err;
-        db.close();
-      })
-    });
+    // MongoClient.connect(MONGO_DB_URL, function(err, db){
+    //   if(err) throw err;
+    //
+    //   var example_user = {
+    //     username: "peter",
+    //     password: "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=", // 1234
+    //     userInfo: {
+    //       role: "admin",
+    //       name: "Peter East",
+    //       email: "peter.east@peter.east.com",
+    //       contact_details: {}
+    //     }
+    //   }
+    //
+    //   db.collection("users").insertOne(example_user, function(err, result){
+    //     if(err) throw err;
+    //     db.close();
+    //   })
+    // });
   },
   batch_add_users: function(){
     // Find some users and add them to the database
+  },
+  controlLevel: {
+    admin: function (req, res, next) {
+        // req.session should be populated.
+        MongoClient.connect(MONGO_DB_URL, function(err, db){
+          if(err) throw err;
+          db.collection("users").findOne({_id:mongodb.ObjectID(req.session_info.user)}, function(err, user){
+            if(err) throw err;
+            if(user.userInfo.role == "admin"){
+              next();
+            } else {
+
+            }
+          });
+        });
+    }
   }
 };

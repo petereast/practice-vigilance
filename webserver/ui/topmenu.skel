@@ -1,0 +1,24 @@
+<div class="top-user-menu" id="topmenu">
+  <!-- This menu will be contain things like 'logout' etc -->
+  <div class="content-container" id="topmenu-content-container">
+    <div class="leftside">
+      <h1>{{user.fullname}}</h1>
+    </div>
+    <div class="rightside">
+      <ul>
+        <li>Notifications</li>
+        <li>Account Settings</li>
+        <li>Logout</li>
+      </ul>
+    </div>
+  </div>
+  <nav class="top-navigation-bar">
+    <div class="button-container">
+      <button type="button" name="button" id="top-nav-menu-dashboard-btn">Dashboard</button>
+      <button type="button" name="button" id="top-nav-menu-assessments-btn">Assessments</button>
+      <button type="button" name="button" id="top-nav-menu-timesheets-btn">Timesheets</button>
+      <button type="button" name="button" id="top-nav-menu-user-btn">User</button>
+    </div>
+  </nav>
+</div>
+<div id="topmenu-shade"></div>

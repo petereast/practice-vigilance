@@ -3,7 +3,9 @@
 }
 
 body{
+  font-family: sans-serif;
   margin: 0px;
+  margin-top: 50px;
 }
 
 div.warning-dialogue-container{
@@ -21,4 +23,154 @@ div.warning-dialogue{
   padding: 30px;
   border-radius: 5px;
   box-shadow: 5px 5px 15px #666;
+}
+
+div.top-user-menu{
+  background: rgb(126, 186, 255);
+}
+
+div.interface-card{
+  padding: 15px;
+  border: 1px solid #555;
+}
+
+div#bottom{
+  width: 100%;
+  background: rgb(97, 97, 97);
+  padding-top: 150px;
+  margin-top: 15px;
+  color: white;
+}
+
+div#bottom a{
+  color: white;
+}
+
+div#topmenu-shade{
+  display: none;
+}
+
+@media screen and (min-width: 800px) {
+  div.top-user-menu{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: -300px;
+    height: 350px;
+    padding: 50px;
+    color: white;
+    z-index: 1000;
+  }
+  div.top-user-menu div.content-container{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  div#topmenu-shade{
+    position: absolute;
+    top:0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 900;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  div.top-user-menu div.leftside{
+    width: 400px;
+    float: left;
+    text-align: center;
+    padding-top: 50px;
+  }
+  div.top-user-menu div.rightside{
+    width: 400px;
+    float: right;
+    text-align: center;
+  }
+
+  div.top-user-menu div.rightside li{
+    width: 200px;
+    text-decoration: none;
+    list-style: none;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 3px;
+  }
+
+  div.top-user-menu nav.top-navigation-bar{
+    width: 100%;
+    background: rgb(159, 174, 255);
+    height: 50px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 3px;
+  }
+  nav.top-navigation-bar > div.button-container{
+    display: block;
+    width: 400px;
+    margin-left: 10%;
+    margin-right: auto;
+    padding: 0px;
+  }
+  nav.top-navigation-bar > div.button-container > button {
+    color: white;
+    padding: 10px;
+    background: none;
+    border: 1px solid white;
+  }
+
+  /* Dialogue boxes*/
+  div.infobox{
+    position: absolute;
+    left: 30px;
+    padding: 40px;
+    width: 400px;
+    border: 2px solid black;
+    border-top: 30px solid black;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px grey;
+  }
+
+  div.warning{
+    border-color: red;
+  }
+
+  /* Document Body */
+
+  div.body-container{
+    width: 800px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 1000px;
+  }
+
+  .admin-card::after{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    content: "Admin";
+    color: rgb(218, 218, 218);
+  }
+
+  div.interface-card{
+    position: relative;
+    width: 40%;
+    border-radius: 5px;
+  }
+
+  div#bottom-content-container{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+  }
+  div.copyright{
+    text-align: center;
+  }
 }
