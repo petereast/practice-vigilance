@@ -111,7 +111,7 @@ div#topmenu-shade{
   }
   nav.top-navigation-bar > div.button-container{
     display: block;
-    width: 400px;
+    width: 500px;
     margin-left: 10%;
     margin-right: auto;
     padding: 0px;
@@ -148,6 +148,7 @@ div#topmenu-shade{
     margin-left: auto;
     margin-right: auto;
     height: 1000px;
+    position: relative;
   }
 
   .admin-card::after{

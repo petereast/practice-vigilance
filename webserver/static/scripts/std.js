@@ -24,4 +24,7 @@ $(document).ready(function () {
   $("#top-nav-menu-timesheets-btn").click(function () {
     location.href = '/timesheets'
   });
+  $("#logout-btn").click(function(){
+    location.href = '/data/end-session'
+  });
 })

@@ -30,12 +30,12 @@ module.exports = {
       db.collection("session").find(query).toArray(function(err, result){
         if(err) throw err;
         // if there's a valid session then next()
-        if(result.length == 1){
+        if(result.length == 1 && result[0].expiry > Date.now()){
           req.session_info = result[0]
           next();
         } else {
           // Invalid session:
-          console.log("invalid session");
+          console.log("[warn] invalid session");
           accessControl.reject_login_attempt(req, res);
         }
       });
@@ -80,7 +80,8 @@ module.exports = {
             data_to_insert = {
               "user": allowed._id,
               "session":uid(),
-              "expiry": 1000*60*60 // One hour, should be configurable.
+              "start": Date.now(),
+              "expiry": Date.now()+ 1000*60*60 // One hour, should be configurable.
             };
 
             console.log(data_to_insert)
@@ -94,7 +95,7 @@ module.exports = {
                 "Set-Cookie":"SessionID="+sessionID+';Path=/'});
               //res.redirect("/dashboard");
               res.end("redirecting...");
-              next();
+              // next();
 
               db.close();
             });
@@ -108,5 +109,24 @@ module.exports = {
       })
     });
 
+  },
+  EndSession: function (req, res) {
+    var parsed_cookies = querystring.parse(req.headers.cookie);
+
+    MongoClient.connect(HTTPSESSION_DB_URL, function(err, db){
+      // This code is to simply check if there's a valid session, and if there
+      // isn't, then to redirect the user to a
+      var query = {
+        session:parsed_cookies['SessionID']
+      };
+
+      db.collection("session").updateOne(query, {"expiry": 0}, function(err, result){
+        if(err) throw err;
+        // End session and redirect to login page.
+        accessControl.reject_login_attempt(req, res);
+      });
+
+      // End of MongoClient.connect block
+    });
   }
 };

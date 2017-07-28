@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/static/style/master.css">
     <link rel="stylesheet" href="/static/style/dashboard.css">
     <script src="/static/scripts/dashboard.js"></script>
+    <script src="/static/scripts/group_list.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="/static/scripts/std.js"></script>
     <title>User Admin</title>
@@ -25,12 +26,8 @@
 
       <!-- Displayy a list of user groups, showing how many users per group -->
       <div id="user-groups-list-container">
+        <div id="user-group-list-loading-indicator">Loading...</div>
         <ul id="users-groups-list-display">
-          <li>
-            <h2>Example group</h2>
-            <p>3 Members</p>
-            <a class="users-group-li-btn" href="users/groups/3442">Edit Group</a>
-          </li>
 
         </ul>
       </div>

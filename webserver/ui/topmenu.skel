@@ -5,10 +5,10 @@
       <h1>{{user.fullname}}</h1>
     </div>
     <div class="rightside">
-      <ul>
+      <ul class="topmenu-user-action-container">
         <li>Notifications</li>
         <li>Account Settings</li>
-        <li>Logout</li>
+        <li id="logout-btn">Logout</li>
       </ul>
     </div>
   </div>
@@ -17,6 +17,7 @@
       <button type="button" name="button" id="top-nav-menu-dashboard-btn">Dashboard</button>
       <button type="button" name="button" id="top-nav-menu-assessments-btn">Assessments</button>
       <button type="button" name="button" id="top-nav-menu-timesheets-btn">Timesheets</button>
+      <button type="button" name="button" id="top-nav-menu-portfolio-btn">My Portfolio</button>
       <button type="button" name="button" id="top-nav-menu-user-btn">User</button>
     </div>
   </nav>

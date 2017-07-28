@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/static/style/master.css">
     <link rel="stylesheet" href="/static/style/dashboard.css">
+    <link rel="stylesheet" href="/static/style/group_view.css">
     <script src="/static/scripts/dashboard.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="/static/scripts/std.js"></script>
+    <script src="/static/scripts/group_view.js"></script>
     <title>User Admin</title>
   </head>
   <body>
@@ -15,26 +17,34 @@
     <div class="body-container">
       <!-- TODO: Make the notification system asynchronous! -->
       {{user.notifications}}
-      <h1>{{group.name}}</h1>
-      <h2>User Group</h2>
-      <p>View and edit the users in this group</p>
-      <div class="button-container">
-        <button id="add-users-by-csv-btn">Add Using CSV file</button>
-        <button id="add-users-by-csv-btn">Add Manually</button>
-        <button id="add-users-by-csv-btn">Add Group</button>
-      </div>
 
       <!-- Displayy a list of user groups, showing how many users per group -->
       <!-- Do this asynchronously -->
+      <!-- To be displayed using client side code. -->
       <div id="group-users-list-container">
+        <h1>{{group.name}}</h1>
+        <h2>User Group</h2>
+        <p>View and edit the users in this group</p>
+        <div class="button-container">
+          <button id="add-users-by-csv-btn">Add Using CSV file</button>
+          <button id="add-users-by-csv-btn">Add Manually</button>
+          <button id="add-users-by-csv-btn">Add Group</button>
+        </div>
+        <!-- TODO: Add a filter and/or search functionality to this -->
         <ul id="group-users-list-display">
-          <li>
-            <h3>Example User</h3>
-            <button type="button" name="button" class="users-group-li-btn">Edit User</button>
-            <button type="button" name="button" class="users-group-li-btn">Remove from Group</button>
-          </li>
-
+          <span id="loading-indicator">
+            Loading...
+          </span>
         </ul>
+      </div>
+      <div id="user-detail-view">
+        <img id="detail-profile-pic" height="128px" width="128px" src="/static/img/person.svg"/>
+        <h1 id="detail-fullname"></h1>
+        <h2 id="username"></h2>
+        <p> Some other user info</p>
+
+        <button id="close-user-detail-view">Close</button>
+
       </div>
     </div>
     <div id="bottom">
