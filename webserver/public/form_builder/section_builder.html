@@ -2,8 +2,11 @@
 <html>
   <head>
     <title>Section Builder</title>
-    <script type="text/javascript" src='/static/scripts/section-builder.js'>
+    <script type="text/javascript" src='/static/scripts/section-builder.js'></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="/static/style/master.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/section-builder.css">
     </script>
   </head>
   <body>
@@ -18,9 +21,9 @@
     </div>
 
 
+    <div class="modal-shade"></div>
     <form class="modal hidden" id="mcq-config">
       <!-- it's a form so it can easily be reset -->
-      <div class="modal-shade"></div>
       <span class="toolpad">
         <h2>MCQ Config</h2>
         <div id="mcq_config_control_container">

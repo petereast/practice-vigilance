@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/static/style/master.css">
     <link rel="stylesheet" href="/static/style/dashboard.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/static/scripts/add_user_manually.js"></script>
     <script src="/static/scripts/dashboard.js"></script>
     <script src="/static/scripts/group_list.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="/static/scripts/std.js"></script>
     <title>User Admin</title>
   </head>
@@ -20,8 +21,9 @@
       <p>Create, edit and update user information. </p>
       <div class="button-container">
         <button id="add-users-by-csv-btn">Add Using CSV file</button>
-        <button id="add-users-by-csv-btn">Add Manually</button>
-        <button id="add-users-by-csv-btn">Add Group</button>
+        <button id="add-users-manually-btn">Add Manually</button>
+        <button id="add-usser-group-btn">Add Group</button>
+        <button id="view-all-users-btn">View All Users</button>
       </div>
 
       <!-- Displayy a list of user groups, showing how many users per group -->
@@ -32,6 +34,40 @@
         </ul>
       </div>
     </div>
+    <div id="add-user-manually-container" class="modal">
+      <h1>Add User Manually</h1>
+      <form id="add-user-form" method="POST" action="/admin/async/user/add">
+        <!-- Firstname, lastname -->
+        <span class="form-input-wrapper form-input-h1">
+            Full name
+            <input id="user-full-name" type="text" name="fullname"/>
+        </span>
+        <span class="form-input-wrapper form-input-h1">
+            Username
+            <input id="user-username" type="text" name="username"/>
+        </span>
+        <span class="form-input-wrapper form-input-h1">
+            Email
+            <input id="user-email" type="text" name="email"/>
+        </span>
+        <span class="form-input-wrapper form-input-h1">
+            Password
+            <input id="user-password" type="password" name="pw"/>
+        </span>
+        <span class="form-input-wrapper form-input-h1">
+            Confirm Password
+            <input id="user-password-confirm" type="password" name="pw-confirm"/>
+        </span>
+        <span class="form-input-wrapper form-input-h1">
+            Add to Group(s) <em>Optional, separate with commas</em><br/>
+            <span id="user-added-groups"></span><input id="user-add-group" type="text"/>
+            <div id="user-groups-search-result-list"></div>
+        </span>
+        <button type="submit" name="submit" class="submit large" id="submit-btn">Submit User</submit>
+      </form>
+
+    </div>
+    <div class="modal-shade"></div>
     <div id="bottom">
       <div id="bottom-content-container">
         <div class="corporate-information">

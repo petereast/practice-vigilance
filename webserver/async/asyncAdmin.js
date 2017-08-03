@@ -1,13 +1,17 @@
 // Async Admin - handles all the asynchronous JSON requests for the administrative
 // stuff
 
+// TODO: Convert this shit into CoffeeScript
+
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 
 const MONGO_DB_URL = "mongodb://localhost:27017/pad-testing";
 
+console.log("[WARN] Depricated version - please use CoffeeScript version for deployment.")
+
 module.exports = {
-  get_groups: function (req, res) {
+  getGroups: function (req, res) {
     // Provide a master function in which all async operations for groups take place.
     // The url will follow this pattern:
     // {server}/admin/async/groups/{groupid}/{action}
@@ -58,7 +62,7 @@ module.exports = {
       }
     })
   },
-  get_user:function (req, res) {
+  getUser:function (req, res) {
     // Use url encoding to get basic user info requests
     // Use POST to get sensitive user info requests and to update/delete information.
 

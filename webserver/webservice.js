@@ -4,7 +4,7 @@ const SERVER_VERSION = {
   major: 0,
   minor: 0,
   codename: "test",
-  status: "Not complete",
+  status: "Depricated",
   system_name: "webservice"
 }
 
@@ -44,6 +44,7 @@ function STARTUP(){
 }
 
 function main(){
+  console.log("This version is no longer in development, please use ws.coffee")
   // Design a webserver, with generic and specific handles
   // using expressjs
 
@@ -64,10 +65,6 @@ function main(){
   // Maybe just use the middleware to handle the login process
   expr_app.use('/data/begin-session', session_handler.InitiateSession)
   expr_app.use('/data/end-session', session_handler.EndSession)
-  //
-  // expr_app.post("/data/begin-session", function(req, res){
-  //   //res.send("login attempt with" + req.header)
-  // })
 
   // Start begin sessioned stuff.
   // Everything on the stack below this point requires a valid session.

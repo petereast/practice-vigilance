@@ -1,0 +1,28 @@
+@media screen and (min-width: 800px) {
+  .modal{
+      background: white;
+      position: absolute;
+      top: 100px;
+      left: 300px;
+      right: 300px;
+      padding: 100px;
+      z-index: 100;
+  }
+
+  .hidden{
+    display: none;
+  }
+
+  div.modal-shade{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(0, 0, 0, 0.31);
+    z-index: 80;
+
+    display: none;
+  }
+
+}

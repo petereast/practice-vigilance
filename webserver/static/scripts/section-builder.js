@@ -62,17 +62,27 @@ window.onload = function(){
 
     document.getElementById('mcq_config_complete').addEventListener('click', mcq_config_complete_mcq)
 
-    mcq_config_add_response_fn();
-    mcq_config_add_response_fn();
-    mcq_config_add_response_fn();
-    mcq_config_add_response_fn();
+
+    $(".modal-shade").fadeIn(200);
+    $(".modal").fadeIn(200);
 
   }
 
 
   var init = function(){
+    mcq_config_add_response_fn();
+    mcq_config_add_response_fn();
+    mcq_config_add_response_fn();
+    mcq_config_add_response_fn();
+    $(".modal-shade").click(function () {
+      $(".modal-shade").fadeOut(200);
+      $(".modal").fadeOut(200);
+    })
 
-    mcq_config_init();
+    document.getElementById("mcq_config_cancel").addEventListener("click", function (ev) {
+      $(".modal-shade").fadeOut(200);
+      $(".modal").fadeOut(200);
+    })
 
     current_section.id = "Test Section";
 
@@ -85,7 +95,7 @@ window.onload = function(){
     });
 
     document.getElementById("add_mcq_btn").addEventListener('click', function(){
-      alert('click');
+      mcq_config_init();
     });
 
   }
