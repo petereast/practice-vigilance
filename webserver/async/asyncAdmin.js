@@ -46,8 +46,8 @@
               for (i = 0, len = result.length; i < len; i++) {
                 item = result[i];
                 delete item._id;
-                obj.memberCount = obj.members.length;
-                delete obj.members;
+                item.memberCount = item.members.length;
+                delete item.members;
               }
               result.push({
                 "I AM AN EMPTY GROUP": null,
@@ -79,6 +79,7 @@
           return db.collection("users").findOne({
             public_identifier: uid
           }, function(err, result) {
+            console.log(result);
             if (result) {
               delete result._id;
               delete result.password;

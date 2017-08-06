@@ -40,8 +40,8 @@ module.exports =
               # For each group, remove unneeded data
               for item in result
                 delete item._id
-                obj.memberCount = obj.members.length
-                delete obj.members
+                item.memberCount = item.members.length
+                delete item.members
 
               # Append another empty placeholder group to the end.
               result.push {"I AM AN EMPTY GROUP":null, "name":"Ungrouped", memberCount:0}

@@ -2,7 +2,10 @@ all:
 	mkdir -p deploy
 	echo "[info] Building coffeescripts"
 	coffee -pc webserver/ws.coffee | uglifyjs -m > ./deploy/ws.js
-	coffee -pc webserver/uauth.coffee | uglifyjs -m > ./deploy/uauth.js
+
+	echo "[info] Building UAUTH"
+	coffee -pc webserver/uauth/uauth.coffee | uglifyjs -m > ./deploy/uauth/uauth.js
+	coffee -pc webserver/uauth/user.coffee | uglifyjs -m > ./deploy/uauth/user.js
 
 	echo "[info] Entering folder webserver/async"
 	mkdir -p ./deploy/async

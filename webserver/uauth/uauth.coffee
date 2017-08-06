@@ -5,6 +5,8 @@
 mongodb = require "mongodb"
 MongoClient = mongodb.MongoClient
 
+
+
 USER_DATABASE_URL = "mongodb://localhost:27017/pad-testing"
 
 module.exports =
@@ -39,14 +41,17 @@ module.exports =
       query =
         _id: userSelector
 
-    
+
     MongoClient.connect USER_DATABASE_URL, (err, db) ->
       if err then throw err
       db.collection "users"
-        .findOne query
+        .findOne query, (err, result) ->
+          if result is null then next null
+          else
+            # TODO: Create a user object to pass to the next stage
+            # create this object in a new class (file)
+            next result
 
-
-    next()
 
   audit: (userSelector, resource) ->
     # Return a function that is expressjs middleware that determines if a user

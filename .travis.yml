@@ -3,4 +3,5 @@ node_js:
         - "node"
 
 before_install:
-        - npm install expressjs mongodb
+        - apt install coffeescript
+        - npm install expressjs mongodb uglify-js
