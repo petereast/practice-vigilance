@@ -7,6 +7,9 @@ const crypto = require('crypto');
 
 const MONGO_DB_URL = "mongodb://localhost:27017/pad-testing";
 function uid(){return crypto.randomBytes(18).toString("hex");}
+
+console.log("[WARNING] This module (access.js) is depricated in favour of uauth.coffee")
+
 module.exports = {
   security_audit: function(req, res, next){
     // Audit the security of the incoming request.
