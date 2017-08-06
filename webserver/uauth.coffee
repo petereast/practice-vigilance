@@ -20,14 +20,32 @@ module.exports =
     # None of the characters will be allowed in a username, and if none are present,
     # default to username (@)
 
-    
+    if typeof userSelector is 'string'
+      switch userSelector[0]
+        when '#'
+          query =
+            public_identifier: userSelector.substring(1)
+        when '@'
+          query =
+            username: userSelector.substring(1)
+        when '&'
+          query =
+            _id: mongodb.objectID(userSelector.substring(1))
+        else
+          query =
+            username: userSelector
+
+    else
+      query =
+        _id: userSelector
+
 
     MongoClient.connect USER_DATABASE_URL, (err, db) ->
       if err then throw err
       db.collection "users"
         .findOne
 
-    if options.Sanitize
+    if options.Sanitize then delete result.password
       # Sanitize the output
 
 

@@ -1,0 +1,19 @@
+{
+  "name": "practice-vigilance",
+  "version": "0.0.1",
+  "description": "A web application for managing, deploying and submitting electronic assessments.",
+  "main": "deploy/ws.js",
+  "scripts": {
+    "test": "make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petereast/practice-vigilance.git"
+  },
+  "author": "Peter East",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/petereast/practice-vigilance/issues"
+  },
+  "homepage": "https://github.com/petereast/practice-vigilance#readme"
+}
