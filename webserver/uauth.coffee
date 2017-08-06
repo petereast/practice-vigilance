@@ -39,15 +39,11 @@ module.exports =
       query =
         _id: userSelector
 
-
+    
     MongoClient.connect USER_DATABASE_URL, (err, db) ->
       if err then throw err
       db.collection "users"
-        .findOne
-
-    if options.Sanitize then delete result.password
-      # Sanitize the output
-
+        .findOne query
 
 
     next()
